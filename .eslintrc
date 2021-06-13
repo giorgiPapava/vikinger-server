@@ -1,0 +1,53 @@
+{
+    "settings": {
+      "import/parsers": {
+        "@typescript-eslint/parser": [".ts", ".tsx"]
+      },
+      "import/resolver": {
+        "node": {
+          "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        },
+        "typescript": {
+          "alwaysTryTypes": true,
+          "project": "tsconfig.json"
+        }
+      }
+    },
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "extends": [
+      "airbnb-typescript"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "project": ["./tsconfig.json"],
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    },
+    "plugins": ["@typescript-eslint", "import"],
+    "rules": {
+      "no-confusing-arrow": ["off", { "allowParens": true }],
+      "import/no-cycle": "off",
+      "no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "^_"
+        }
+      ],
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "^_"
+        }
+      ],
+      "implicit-arrow-linebreak": "off",
+      "import/extensions": "off",
+      "semi": [0, "always"],
+      "@typescript-eslint/semi": [0, "always"],
+      "no-use-before-define": "off",
+      "@typescript-eslint/no-use-before-define": ["error"]
+    },
+  }
+  
