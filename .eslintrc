@@ -18,7 +18,9 @@
       "es2021": true
     },
     "extends": [
-      "airbnb-typescript"
+      "airbnb-typescript",
+      "plugin:import/recommended",
+      "plugin:import/typescript"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -28,6 +30,8 @@
     },
     "plugins": ["@typescript-eslint", "import"],
     "rules": {
+      "import/prefer-default-export": "off",
+      "class-methods-use-this": "off",
       "no-confusing-arrow": ["off", { "allowParens": true }],
       "import/no-cycle": "off",
       "no-unused-vars": [
