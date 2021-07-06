@@ -23,9 +23,10 @@ function main() {
         const server = new apollo_server_1.ApolloServer({
             typeDefs: schema_1.default,
             resolvers: resolvers_1.default,
-            context: ({ req }) => (Object.assign(Object.assign({}, req), { prisma, userId: req && req.headers.authorization
-                    ? utils_1.getUserId(req)
-                    : null })),
+            context: ({ req }) => ({
+                prisma,
+                userId: req && req.headers.authorization ? utils_1.getUserId(req.headers.authorization) : null,
+            }),
         });
         server.listen().then(({ url }) => console.log(`Server is running on ${url}`));
     });

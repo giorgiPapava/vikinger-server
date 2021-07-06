@@ -1,6 +1,8 @@
-const users = async (_parent: any, _args: any, context: any) =>
+import { Context } from '../index';
+
+const users = async (_parent: null, _args: null, context: Context) =>
   context.prisma.user.findMany();
 
 export default {
   users,
-}
+};
