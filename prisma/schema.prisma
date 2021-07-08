@@ -9,19 +9,22 @@ datasource db {
 
 model User {
   id        Int      @id @default(autoincrement())
-  username  String   @unique
   email     String   @unique
-  password  String
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+  username  String?  @unique
+  password  String?
+  googleId  String?  @unique
   profile   Profile?
 
   @@map("users")
 }
 
 model Profile {
-  id     Int     @id @default(autoincrement())
-  bio    String?
-  userId Int     @unique
-  user   User    @relation(fields: [userId], references: [id])
+  id        Int     @id @default(autoincrement())
+  bio       String?
+  firstName String? @map("first_name")
+  lastName  String? @map("last_name")
+  userId    Int     @unique
+  user      User    @relation(fields: [userId], references: [id])
 }

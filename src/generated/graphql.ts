@@ -40,6 +40,8 @@ export type MutationSignupArgs = {
   username: Scalars['String'];
   email: Scalars['String'];
   password: Scalars['String'];
+  firstName: Scalars['String'];
+  lastName: Scalars['String'];
 };
 
 
@@ -51,8 +53,10 @@ export type MutationLoginArgs = {
 export type Profile = {
   __typename?: 'Profile';
   id: Scalars['ID'];
-  bio?: Maybe<Scalars['String']>;
   userId: Scalars['ID'];
+  firstName?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
+  bio?: Maybe<Scalars['String']>;
 };
 
 export type Query = {
@@ -64,11 +68,12 @@ export type Query = {
 export type User = {
   __typename?: 'User';
   id: Scalars['ID'];
-  username: Scalars['String'];
-  password: Scalars['String'];
   email: Scalars['String'];
   createdAt: Scalars['Date'];
   updatedAt: Scalars['Date'];
+  googleId?: Maybe<Scalars['String']>;
+  username?: Maybe<Scalars['String']>;
+  password?: Maybe<Scalars['String']>;
   profile?: Maybe<Profile>;
 };
 
@@ -195,14 +200,16 @@ export interface DateScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes
 }
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
-  signup?: Resolver<ResolversTypes['AuthPayload'], ParentType, ContextType, RequireFields<MutationSignupArgs, 'username' | 'email' | 'password'>>;
+  signup?: Resolver<ResolversTypes['AuthPayload'], ParentType, ContextType, RequireFields<MutationSignupArgs, 'username' | 'email' | 'password' | 'firstName' | 'lastName'>>;
   login?: Resolver<Maybe<ResolversTypes['AuthPayload']>, ParentType, ContextType, RequireFields<MutationLoginArgs, 'email' | 'password'>>;
 };
 
 export type ProfileResolvers<ContextType = any, ParentType extends ResolversParentTypes['Profile'] = ResolversParentTypes['Profile']> = {
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  bio?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   userId?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  firstName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  lastName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  bio?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -216,11 +223,12 @@ export interface UploadScalarConfig extends GraphQLScalarTypeConfig<ResolversTyp
 
 export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  username?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  password?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   createdAt?: Resolver<ResolversTypes['Date'], ParentType, ContextType>;
   updatedAt?: Resolver<ResolversTypes['Date'], ParentType, ContextType>;
+  googleId?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  username?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  password?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   profile?: Resolver<Maybe<ResolversTypes['Profile']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };

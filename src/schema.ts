@@ -8,7 +8,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    signup(username: String!, email: String!, password: String!): AuthPayload!
+    signup(username: String!, email: String!, password: String!, firstName: String!, lastName: String!): AuthPayload!
     login(email: String!, password: String!): AuthPayload
   }
 
@@ -19,18 +19,21 @@ const typeDefs = gql`
 
   type User {
     id: ID!
-    username: String!
-    password: String!
     email: String!
     createdAt: Date!
     updatedAt: Date!
+    googleId: String
+    username: String
+    password: String
     profile: Profile
   }
 
   type Profile {
     id: ID!
-    bio: String
     userId: ID!
+    firstName: String
+    lastName: String
+    bio: String
   }
 `;
 
