@@ -23,6 +23,12 @@ const signup = async (_parent: null, args: MutationSignupArgs, context: Context)
       },
     },
   });
+  const userWithoutPassword = {
+    ...user,
+    password: null,
+  }
+
+  context.pubsub.publish('NEW_USER', userWithoutPassword)
 
   const token = jwt.sign({ userId: user.id }, APP_SECRET);
 

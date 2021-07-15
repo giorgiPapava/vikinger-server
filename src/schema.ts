@@ -35,6 +35,10 @@ const typeDefs = gql`
     lastName: String
     bio: String
   }
+
+  type Subscription {
+    newUser: User
+  }
 `;
 
 export default typeDefs;

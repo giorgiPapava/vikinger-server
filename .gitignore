@@ -3,6 +3,8 @@
 # dist
 /dist
 
+/src/generated
+
 # dependencies
 /node_modules
 /.pnp
