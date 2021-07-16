@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint . --ext ts --ext tsx --ext js",
-    "watch": "tsc -w",
-    "start": "nodemon dist/index.js",
+    "start": "nodemon --watch 'src/**' --ext 'ts,json' --exec 'ts-node src/index.ts'",
     "type-check": "tsc --pretty --noEmit",
     "typegen": "graphql-codegen --config codegen.yml"
   },
@@ -47,6 +46,7 @@
     "jsonwebtoken": "^8.5.1",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
-    "subscriptions-transport-ws": "^0.9.19"
+    "subscriptions-transport-ws": "^0.9.19",
+    "ts-node": "^10.1.0"
   }
 }

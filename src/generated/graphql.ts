@@ -64,6 +64,11 @@ export type Query = {
   users: Array<User>;
 };
 
+export type Subscription = {
+  __typename?: 'Subscription';
+  newUser?: Maybe<User>;
+};
+
 
 export type User = {
   __typename?: 'User';
@@ -163,6 +168,7 @@ export type ResolversTypes = {
   Profile: ResolverTypeWrapper<Profile>;
   ID: ResolverTypeWrapper<Scalars['ID']>;
   Query: ResolverTypeWrapper<{}>;
+  Subscription: ResolverTypeWrapper<{}>;
   Upload: ResolverTypeWrapper<Scalars['Upload']>;
   User: ResolverTypeWrapper<User>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
@@ -178,6 +184,7 @@ export type ResolversParentTypes = {
   Profile: Profile;
   ID: Scalars['ID'];
   Query: {};
+  Subscription: {};
   Upload: Scalars['Upload'];
   User: User;
   Int: Scalars['Int'];
@@ -217,6 +224,10 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
   users?: Resolver<Array<ResolversTypes['User']>, ParentType, ContextType>;
 };
 
+export type SubscriptionResolvers<ContextType = any, ParentType extends ResolversParentTypes['Subscription'] = ResolversParentTypes['Subscription']> = {
+  newUser?: SubscriptionResolver<Maybe<ResolversTypes['User']>, "newUser", ParentType, ContextType>;
+};
+
 export interface UploadScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['Upload'], any> {
   name: 'Upload';
 }
@@ -239,6 +250,7 @@ export type Resolvers<ContextType = any> = {
   Mutation?: MutationResolvers<ContextType>;
   Profile?: ProfileResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  Subscription?: SubscriptionResolvers<ContextType>;
   Upload?: GraphQLScalarType;
   User?: UserResolvers<ContextType>;
 };

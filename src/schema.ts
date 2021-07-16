@@ -24,7 +24,6 @@ const typeDefs = gql`
     updatedAt: Date!
     googleId: String
     username: String
-    password: String
     profile: Profile
   }
 
